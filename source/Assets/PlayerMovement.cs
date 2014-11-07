@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
+
+
 	// Use this for initialization
 	void Start () {
 	
@@ -10,10 +12,10 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Move ();
+		MovePlayer ();
 	}
 
-	void Move(){
+	void MovePlayer(){
 		if (Input.GetKey (KeyCode.D) | Input.GetKey (KeyCode.RightArrow)) {
 			transform.Translate(Vector2.right * 5f * Time.deltaTime);
 		}
