@@ -3,25 +3,21 @@ using System.Collections;
 
 public class CameraMovement : MonoBehaviour {
 
-	public Transform Player; 
-
+	private Transform Player; 
+	private Vector3 CameraTarget;
+	private float CameraHeight = 10;
 
 	// Use this for initialization
 	void Start () {
+		Player = GameObject.FindGameObjectWithTag ("Player").transform;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		MoveCamera ();
+		CameraTarget = new Vector3 (Player.position.x, Player.position.y + CameraHeight, Player.position.z);
+		transform.position = Vector3.Lerp (transform.position, CameraTarget, Time.deltaTime * 8);
 	}
 
-	void MoveCamera(){
-		var x = transform.position.x; 
-		var y = transform.position.y;
 
-		//x = Player.position.x;
-		//y = Player.position.y;
-
-		transform.position = new Vector2 (x, y);
-	}
 }
