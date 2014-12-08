@@ -207,7 +207,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 631549341}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 3.93334866, y: 3.20282602, z: -.384387821}
+  m_LocalPosition: {x: 3.93334866, y: 2.32246065, z: -.384387881}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa658ccaa3722745b1b751e566d123f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CameraHeight: 30
 --- !u!20 &1298718976
 Camera:
   m_ObjectHideFlags: 0
@@ -279,7 +280,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1298718972}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: 8.89817047, z: 4.74874241e-07}
+  m_LocalPosition: {x: 4.38831425, y: 22.6792774, z: -2.65389562}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -342,7 +343,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1588053443}
   m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381661, w: .875426114}
-  m_LocalPosition: {x: -6.76106262, y: -24.9618378, z: 28.0511093}
+  m_LocalPosition: {x: 11.1725206, y: 58.4842987, z: -14.8400564}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -360,6 +361,7 @@ GameObject:
   - 23: {fileID: 1958798675}
   - 143: {fileID: 1958798679}
   - 114: {fileID: 1958798674}
+  - 114: {fileID: 1958798680}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -425,7 +427,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1958798673}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -1.75396395, y: 3.28649187, z: -1.64605701}
+  m_LocalPosition: {x: -1.75396395, y: 2.46481943, z: -1.64605713}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -444,3 +446,16 @@ CharacterController:
   m_SkinWidth: .0799999982
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1958798680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1958798673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23d18d81c7b773438b21fe37bbb1042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullet: {fileID: 400000, guid: 1b7881e8b46f0d54696f41276240edc2, type: 2}
+  Cooldown: .200000003

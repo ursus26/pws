@@ -5,7 +5,7 @@ public class CameraMovement : MonoBehaviour {
 
 	private Transform Player; 
 	private Vector3 CameraTarget;
-	private float CameraHeight = 10;
+	public float CameraHeight = 10;
 
 	// Use this for initialization
 	void Start () {
