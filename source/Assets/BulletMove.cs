@@ -13,7 +13,7 @@ public class BulletMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//Moves the bullet
-		transform.Translate (Vector3.forward * Time.deltaTime * MoveSpeed);
+		transform.Translate (Vector3.up * Time.deltaTime * MoveSpeed);
 
 		//Destroys bullet after 5 seconds
 		Destroy (this.gameObject, 5);
