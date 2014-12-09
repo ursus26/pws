@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class BulletMove : MonoBehaviour {
-	private float MoveSpeed = 100;
+
+	public float MoveSpeed = 40;	//Movementspeed of the bullet
 
 
 	// Use this for initialization
@@ -12,10 +13,7 @@ public class BulletMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//Moves the bullet
-		transform.Translate (Vector3.up * Time.deltaTime * MoveSpeed);
-
-		//Destroys bullet after 5 seconds
-		Destroy (this.gameObject, 5);
+		transform.Translate (Vector3.up * Time.deltaTime * MoveSpeed);	//Moves the bullet
+		Destroy (this.gameObject, 5);									//Destroys bullet after 5 seconds
 	}
 }

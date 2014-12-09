@@ -6,7 +6,7 @@ public class PlayerShoot : MonoBehaviour {
 	public Transform Bullet;
 
 	public float Cooldown = .1f;	//cooldown of shooting a bullet in miliseconds
-	private float NextShot;
+	private float NextShot;			//Time for the next shot
 
 
 	// Use this for initialization
@@ -28,6 +28,6 @@ public class PlayerShoot : MonoBehaviour {
 
 
 	void SpawnBullet(){
-		Instantiate(Bullet, transform.position, transform.rotation);	
+		Instantiate(Bullet, transform.position, transform.rotation);	//Spawns a bullet	
 	}
 }
