@@ -48,6 +48,9 @@
   <ItemGroup>
      <Compile Include="Assets\BulletMove.cs" />
      <Compile Include="Assets\CameraMovement.cs" />
+     <Compile Include="Assets\Map Editor\scripts\grid.cs" />
+     <Compile Include="Assets\Map Editor\scripts\gridwindow.cs" />
+     <Compile Include="Assets\Map Editor\scripts\tileset.cs" />
      <Compile Include="Assets\PlayerMovement.cs" />
      <Compile Include="Assets\PlayerShoot.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
