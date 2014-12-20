@@ -43,4 +43,7 @@ public class PlayerMovement : MonoBehaviour {
 		float rotation = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;						//Calculate the angle to rotate around
 		transform.rotation = Quaternion.Euler(0, 0, rotation - 90);										//Rotates the player
 	}
+
+
+
 }

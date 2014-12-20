@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BulletCollision.cs" />
      <Compile Include="Assets\BulletMove.cs" />
      <Compile Include="Assets\CameraMovement.cs" />
      <Compile Include="Assets\Map Editor\scripts\grid.cs" />
