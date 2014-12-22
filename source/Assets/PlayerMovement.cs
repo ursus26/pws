@@ -2,7 +2,6 @@
 using System.Collections;
 
 
-
 public class PlayerMovement : MonoBehaviour {
 
 	// Use this for initialization
@@ -17,7 +16,10 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 
+
 	void MovePlayer(){
+
+
 		if (Input.GetKey (KeyCode.D) | Input.GetKey (KeyCode.RightArrow)) {			//if D or Right arrow is pressed->move right in the world
 			transform.Translate(Vector3.right * 4f * Time.deltaTime, Space.World);
 		}
@@ -33,7 +35,11 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetKey (KeyCode.S) | Input.GetKey (KeyCode.DownArrow) ) {			//if S or Down arrow is pressed->move down in the world
 			transform.Translate(Vector3.down * 4f * Time.deltaTime, Space.World);
 		}
+
+
 }
+		
+
 
 
 	void RotatePlayer(){
@@ -43,7 +49,4 @@ public class PlayerMovement : MonoBehaviour {
 		float rotation = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;						//Calculate the angle to rotate around
 		transform.rotation = Quaternion.Euler(0, 0, rotation - 90);										//Rotates the player
 	}
-
-
-
 }

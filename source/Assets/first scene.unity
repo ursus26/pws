@@ -385,8 +385,8 @@ GameObject:
   - 23: {fileID: 1958798675}
   - 114: {fileID: 1958798674}
   - 114: {fileID: 1958798680}
-  - 143: {fileID: 1958798679}
-  - 65: {fileID: 1958798676}
+  - 58: {fileID: 1958798676}
+  - 50: {fileID: 1958798679}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -425,18 +425,17 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1958798676
-BoxCollider:
+--- !u!58 &1958798676
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1958798673}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Radius: .601085663
+  m_Center: {x: 0, y: 0}
 --- !u!33 &1958798677
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -456,20 +455,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!143 &1958798679
-CharacterController:
+--- !u!50 &1958798679
+Rigidbody2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1958798673}
-  serializedVersion: 2
-  m_Height: 1
-  m_Radius: .5
-  m_SlopeLimit: 45
-  m_StepOffset: .300000012
-  m_SkinWidth: .0799999982
-  m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!114 &1958798680
 MonoBehaviour:
   m_ObjectHideFlags: 0

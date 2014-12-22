@@ -3,7 +3,7 @@
 		var tag = obj.gameObject.tag;
 		
 
-		if (name == "GameObject"){
+		if (tag == "Wall"){
 			Destroy (this.gameObject);
 		}
 	}
