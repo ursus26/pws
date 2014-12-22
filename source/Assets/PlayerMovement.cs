@@ -21,19 +21,19 @@ public class PlayerMovement : MonoBehaviour {
 
 
 		if (Input.GetKey (KeyCode.D) | Input.GetKey (KeyCode.RightArrow)) {			//if D or Right arrow is pressed->move right in the world
-			transform.Translate(Vector3.right * 4f * Time.deltaTime, Space.World);
+			transform.Translate(Vector3.right * 5f * Time.deltaTime, Space.World);
 		}
 		
 		if (Input.GetKey (KeyCode.A) | Input.GetKey (KeyCode.LeftArrow)) {			//if A or Left arrow is pressed->move left in the world
-			transform.Translate(Vector3.right * -4f * Time.deltaTime, Space.World);
+			transform.Translate(Vector3.right * -5f * Time.deltaTime, Space.World);
 		}
 		
 		if (Input.GetKey (KeyCode.W) | Input.GetKey (KeyCode.UpArrow)) {			//if W or Up arrow is pressed->move up in the world
-			transform.Translate(Vector3.up * 4f * Time.deltaTime, Space.World);
+			transform.Translate(Vector3.up * 5f * Time.deltaTime, Space.World);
 		}
 		
 		if (Input.GetKey (KeyCode.S) | Input.GetKey (KeyCode.DownArrow) ) {			//if S or Down arrow is pressed->move down in the world
-			transform.Translate(Vector3.down * 4f * Time.deltaTime, Space.World);
+			transform.Translate(Vector3.down * 5f * Time.deltaTime, Space.World);
 		}
 
 
