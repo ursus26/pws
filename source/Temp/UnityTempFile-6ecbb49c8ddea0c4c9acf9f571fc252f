@@ -39,7 +39,9 @@
 -define:ENABLE_PROFILER
 -define:UNITY_EDITOR
 -define:UNITY_EDITOR_WIN
+Assets/BulletMove.cs
 Assets/CameraMovement.cs
 Assets/PlayerMovement.cs
+Assets/PlayerShoot.cs
 -r:"E:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
 -r:"E:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"
