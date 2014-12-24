@@ -46,8 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BulletCollision.js" />
-     <Compile Include="Assets\PlayerColliderMovement.js" />
+     <Compile Include="Assets\Scripts\BulletCollision.js" />
+     <Compile Include="Assets\Scripts\PlayerColliderMovement.js" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\CameraRelativeControl.js" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\FirstPersonControl.js" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\FollowTransform.js" />

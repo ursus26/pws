@@ -46,13 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BulletMove.cs" />
-     <Compile Include="Assets\CameraMovement.cs" />
      <Compile Include="Assets\Map Editor\scripts\grid.cs" />
      <Compile Include="Assets\Map Editor\scripts\gridwindow.cs" />
      <Compile Include="Assets\Map Editor\scripts\tileset.cs" />
-     <Compile Include="Assets\PlayerMovement.cs" />
-     <Compile Include="Assets\PlayerShoot.cs" />
+     <Compile Include="Assets\Scripts\BulletMove.cs" />
+     <Compile Include="Assets\Scripts\CameraMovement.cs" />
+     <Compile Include="Assets\Scripts\ChangeScene.cs" />
+     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\PlayerShoot.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
