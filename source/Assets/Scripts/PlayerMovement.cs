@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour {
 
 	private bool LockMovement;
 
-
 	// Use this for initialization
 	void Start () {
 		LockMovement = false;
@@ -63,5 +62,6 @@ public class PlayerMovement : MonoBehaviour {
 	public void setLockMovementTrue() {
 		LockMovement = true;
 	}
+
 
 }//End of class
