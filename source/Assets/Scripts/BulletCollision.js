@@ -6,4 +6,8 @@
 		if (tag == "Wall"){
 			Destroy (this.gameObject);
 		}
+		
+		if (tag == "Player" | tag == "Enemy"){
+			Destroy (this.gameObject);
+		}
 	}
