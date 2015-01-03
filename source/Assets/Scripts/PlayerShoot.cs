@@ -28,8 +28,6 @@ public class PlayerShoot : MonoBehaviour {
 
 
 	void SpawnBullet(){
-		//var newpos = renderer.bounds.center + .5 * renderer.bounds.size.x;
 		Instantiate(Bullet, transform.position, transform.rotation);	//Spawns a bullet	
-		//Instantiate (Bullet, newpos, Transform.rotation);
 	}
 }
