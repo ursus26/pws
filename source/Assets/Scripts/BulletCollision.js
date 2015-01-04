@@ -1,5 +1,5 @@
 ﻿function OnTriggerEnter2D(obj : Collider2D) {
-		var cs = GameObject.Find("Player");
+		var cs = GameObject.Find("Player1");
 		var playerHealth = cs.GetComponent("PlayerHealth");
 		var playerSpawn = cs.GetComponent("PlayerSpawn");
 		
@@ -17,7 +17,7 @@
 			obj.playerHealth.TakeDamage();
 		}
 		
-		if (tag == "Player" | tag == "Enemy"){
+		/* if (tag == "Player" | tag == "Enemy"){
 			Destroy (this.gameObject);
-		}
+		} */
 	}

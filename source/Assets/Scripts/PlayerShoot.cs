@@ -7,6 +7,7 @@ public class PlayerShoot : MonoBehaviour {
 
 	public float Cooldown = .1f;	//cooldown of shooting a bullet in miliseconds
 	private float NextShot;			//Time for the next shot
+	//public Vector3 SpawnOffset;
 	bool LockAction = false;
 
 
@@ -32,6 +33,7 @@ public class PlayerShoot : MonoBehaviour {
 
 
 	void SpawnBullet(){
+		//SpawnOffset.y = 1f;
 		Instantiate(Bullet, transform.position, transform.rotation);	//Spawns a bullet	
 	}
 

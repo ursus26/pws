@@ -43,11 +43,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	}
 		
-<<<<<<< HEAD
-=======
 
-
->>>>>>> origin/master
 	void RotatePlayer(){
 		Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;	//Difference of mousepos and playerpos
 		difference.Normalize();																			//makes the sum of Vector3 = 1
