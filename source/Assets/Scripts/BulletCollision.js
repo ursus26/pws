@@ -16,4 +16,8 @@
 			Destroy (this.gameObject);
 			obj.playerHealth.TakeDamage();
 		}
+		
+		if (tag == "Player" | tag == "Enemy"){
+			Destroy (this.gameObject);
+		}
 	}

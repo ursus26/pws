@@ -4,15 +4,20 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
+	private bool LockMovement;
+
 	// Use this for initialization
 	void Start () {
-
+		LockMovement = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		MovePlayer ();
-		RotatePlayer ();
+
+		if(LockMovement == false) {
+			MovePlayer ();
+			RotatePlayer ();
+		}
 	}
 
 
@@ -36,9 +41,13 @@ public class PlayerMovement : MonoBehaviour {
 			transform.Translate(Vector3.down * 5f * Time.deltaTime, Space.World);
 		}
 
-
-}
+	}
 		
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/master
 	void RotatePlayer(){
 		Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;	//Difference of mousepos and playerpos
 		difference.Normalize();																			//makes the sum of Vector3 = 1
@@ -46,4 +55,16 @@ public class PlayerMovement : MonoBehaviour {
 		float rotation = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;						//Calculate the angle to rotate around
 		transform.rotation = Quaternion.Euler(0, 0, rotation - 90);										//Rotates the player
 	}
-}
+
+
+
+	public void setLockMovementFalse() {
+		LockMovement = false;
+	}
+
+	public void setLockMovementTrue() {
+		LockMovement = true;
+	}
+
+
+}//End of class
