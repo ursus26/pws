@@ -1,9 +1,9 @@
 ﻿function OnTriggerEnter2D(obj : Collider2D) {
-		var cs = GameObject.Find("Player");
-		var playerHealth = cs.GetComponent("PlayerHealth");
-		var playerSpawn = cs.GetComponent("PlayerSpawn");
+		var player = GameObject.Find("Player");
+		var playerHealth = player.GetComponent("PlayerHealth");
 		
-		var name = obj.gameObject.name;
+		
+		var name = obj.gameObject.transform.parent.name;
 		var tag = obj.gameObject.tag;
 		
 
@@ -12,12 +12,8 @@
 			playerHealth.TakeDamage(5);
 		}
 		
-		if (tag == "Player" || tag == "Enemy"){
+		if (name == "Player" || name == "Enemy"){
 			Destroy (this.gameObject);
-			obj.playerHealth.TakeDamage();
-		}
-		
-		if (tag == "Player" | tag == "Enemy"){
-			Destroy (this.gameObject);
+		    obj.transform.parent.GetComponent("PlayerHealth").TakeDamage(5);
 		}
 	}
