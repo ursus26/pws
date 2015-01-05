@@ -4,26 +4,20 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-	private bool LockMovement;
-
 	// Use this for initialization
 	void Start () {
-		LockMovement = false;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-		if(LockMovement == false) {
-			MovePlayer ();
-			RotatePlayer ();
-		}
+		MovePlayer ();
+		RotatePlayer ();
 	}
 
 
 
 	void MovePlayer(){
-
 
 		if (Input.GetKey (KeyCode.D) | Input.GetKey (KeyCode.RightArrow)) {			//if D or Right arrow is pressed->move right in the world
 			transform.Translate(Vector3.right * 5f * Time.deltaTime, Space.World);
@@ -40,7 +34,6 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetKey (KeyCode.S) | Input.GetKey (KeyCode.DownArrow) ) {			//if S or Down arrow is pressed->move down in the world
 			transform.Translate(Vector3.down * 5f * Time.deltaTime, Space.World);
 		}
-
 	}
 		
 
@@ -51,16 +44,5 @@ public class PlayerMovement : MonoBehaviour {
 		float rotation = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;						//Calculate the angle to rotate around
 		transform.rotation = Quaternion.Euler(0, 0, rotation - 90);										//Rotates the player
 	}
-
-
-
-	public void setLockMovementFalse() {
-		LockMovement = false;
-	}
-
-	public void setLockMovementTrue() {
-		LockMovement = true;
-	}
-
-
+	
 }//End of class

@@ -13,16 +13,17 @@ public class PauseMenu : MonoBehaviour {
 	private int GroupHeight = 200;
 
 	//Components
-	private PlayerMovement PM;
-	private PlayerShoot PS;
+	private PlayerMovement MovementScript;
+	private PlayerShoot ShootScript;
+
 
 	// Use this for initialization
 	void Start () {
 		MenuOpen = false;
 
 		//get Components
-		PM = GetComponent<PlayerMovement>();
-		PS = GetComponentInChildren<PlayerShoot>();
+		MovementScript = GetComponent<PlayerMovement>();
+		ShootScript = GetComponentInChildren<PlayerShoot>();
 	}
 	
 	// Update is called once per frame
@@ -35,12 +36,10 @@ public class PauseMenu : MonoBehaviour {
 
 	bool ChangeMenuState() {
 		if(MenuOpen == false) {//open menu and disable player actions
-			PM.setLockMovementTrue();
-			PS.setLockActionTrue();
+			DisablePlayerActions();
 			return true;
 		} else {//close the menu and enable player actions
-			PM.setLockMovementFalse();
-			PS.setLockActionFalse();
+			EnablePlayerActions();
 			return false;
 		}
 
@@ -52,18 +51,35 @@ public class PauseMenu : MonoBehaviour {
 		if(MenuOpen == true) {//When menu is open draw these buttons
 
 			GUI.BeginGroup(new Rect(((Screen.width / 2) - (GroupWidth / 2)), ((Screen.height / 2) - (GroupHeight / 2)), GroupWidth, GroupHeight));
-			if(GUI.Button(new Rect(0,0, ButtonWidth, ButtonHeight),"Resume")){//Reseme button
+
+			//Reseme button
+			if(GUI.Button(new Rect(0,0, ButtonWidth, ButtonHeight),"Resume")){
 				MenuOpen = false;
-				PM.setLockMovementFalse();
-				PS.setLockActionFalse();
+				EnablePlayerActions();
 			}
 
-			if(GUI.Button(new Rect(0,60, ButtonWidth, ButtonHeight),"Exit level")){//Exit level button
+			//Exit level button
+			if(GUI.Button(new Rect(0,60, ButtonWidth, ButtonHeight),"Exit level")){
 				Application.LoadLevel ("Menu");
 			}
+
 			GUI.EndGroup();
 		}
 
+	}
+
+
+	//Disable all player actions like movement and shooting
+	void DisablePlayerActions() {
+		MovementScript.enabled = false;
+		ShootScript.enabled = false;
+	}
+
+
+	//Enable all player actions like movement and shooting
+	void EnablePlayerActions() {
+		MovementScript.enabled = true;
+		ShootScript.enabled = true;
 	}
 
 }//End of class
