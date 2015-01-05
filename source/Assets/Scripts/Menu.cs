@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PauseMenu : MonoBehaviour {
+public class Menu : MonoBehaviour {
 
 	//Menu status
-	public bool MenuOpen = false;
+	public bool GameMenuOpen = false;
 
 	//Button variables
 	private int ButtonWidth = 250;
@@ -19,7 +19,7 @@ public class PauseMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		MenuOpen = false;
+		GameMenuOpen = false;
 
 		//get Components
 		MovementScript = GetComponent<PlayerMovement>();
@@ -29,43 +29,42 @@ public class PauseMenu : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 		if(Input.GetKeyDown (KeyCode.Escape)) {//If Esc key is pressed -> open or close menu
-			MenuOpen = ChangeMenuState();
+			GameMenuOpen = ChangeMenuState();
+		}
+	}
+
+
+	void OnGUI() {
+
+		if(GameMenuOpen == true) {//When menu is open draw these buttons
+
+			GUI.BeginGroup(new Rect(((Screen.width / 2) - (GroupWidth / 2)), ((Screen.height / 2) - (GroupHeight / 2)), GroupWidth, GroupHeight));
+
+			//Reseme button
+			if(GUI.Button(new Rect(0,0, ButtonWidth, ButtonHeight),"Resume")){
+				GameMenuOpen = false;
+				EnablePlayerActions();
+			}
+
+			//Exit level button
+			if(GUI.Button(new Rect(0,60, ButtonWidth, ButtonHeight),"Exit level")){
+				Application.LoadLevel ("MainMenu");
+			}
+
+			GUI.EndGroup();
 		}
 	}
 
 
 	bool ChangeMenuState() {
-		if(MenuOpen == false) {//open menu and disable player actions
+		if(GameMenuOpen == false) {//open menu and disable player actions
 			DisablePlayerActions();
 			return true;
 		} else {//close the menu and enable player actions
 			EnablePlayerActions();
 			return false;
 		}
-
-	}
-
-
-	void OnGUI() {
-
-		if(MenuOpen == true) {//When menu is open draw these buttons
-
-			GUI.BeginGroup(new Rect(((Screen.width / 2) - (GroupWidth / 2)), ((Screen.height / 2) - (GroupHeight / 2)), GroupWidth, GroupHeight));
-
-			//Reseme button
-			if(GUI.Button(new Rect(0,0, ButtonWidth, ButtonHeight),"Resume")){
-				MenuOpen = false;
-				EnablePlayerActions();
-			}
-
-			//Exit level button
-			if(GUI.Button(new Rect(0,60, ButtonWidth, ButtonHeight),"Exit level")){
-				Application.LoadLevel ("Menu");
-			}
-
-			GUI.EndGroup();
-		}
-
+		
 	}
 
 

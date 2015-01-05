@@ -29,6 +29,7 @@ public class PlayerShoot : MonoBehaviour {
 
 
 	void SpawnBullet(){
+
 		Instantiate(Bullet, transform.position, transform.rotation);	//Spawns a bullet	
 	}
 
