@@ -48,7 +48,8 @@ public class Menu : MonoBehaviour {
 
 			//Exit level button
 			if(GUI.Button(new Rect(0,60, ButtonWidth, ButtonHeight),"Exit level")){
-				Application.LoadLevel ("MainMenu");
+				//Application.LoadLevel ("MainMenu");
+				ChangeScene.Instance.ChangeSceneTo("MainMenu");
 			}
 
 			GUI.EndGroup();

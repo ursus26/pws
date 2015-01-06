@@ -3,9 +3,6 @@ using System.Collections;
 
 public class MenuManager : MonoBehaviour {
 
-	//GameObject PlayButton = GameObject.Find("PlayButton");
-	//GameObject ExitButton = GameObject.Find ("ExitButton");
-
 	// Use this for initialization
 	public string CurrentMenu;
 	public string Name;
@@ -14,12 +11,6 @@ public class MenuManager : MonoBehaviour {
 		CurrentMenu = "Main";
 	}
 	
-	// Update is called once per frame
-	void Update () {
-
-	}
-
-
 	void OnGUI() {
 		if(CurrentMenu == "Main") {
 			MainMenu ();
@@ -41,21 +32,30 @@ public class MenuManager : MonoBehaviour {
 
 
 	void MainMenu() {
+
+		//Button that goes to the next menu where players can host a match/server
 		if(GUI.Button(new Rect(50,25,100,40), "Host")) {
 			ChangeMenu("Host");
 		}
+
+		//Button that goes to the next menu where players can join a match/server
 		if(GUI.Button(new Rect(50,65,100,40), "Join server")) {
 			ChangeMenu("Server List");
 		}
 	}
 
 	void HostMenu() {
+
+		//Button that starts a new server
 		if(GUI.Button(new Rect(50,25,100,40), "Start")) {
-			NetworkManager.Instance.StartServer(Name, 2);
+			NetworkManager.Instance.StartServer(Name, 8);
 
 		}
+
+		//Text field where players can enter there servername
 		Name = GUI.TextField(new Rect(50,65,100,40), Name);
 
+		//Return to main menu
 		if(GUI.Button(new Rect(50,105,100,40), "Return")) {
 			ChangeMenu("Main");
 		}
@@ -63,28 +63,28 @@ public class MenuManager : MonoBehaviour {
 
 	void ServerListMenu() {
 
+		//Refresh the list containing all servers that are online
 		if(GUI.Button(new Rect(50,65,100,40), "Refresh")) {
-			MasterServer.RequestHostList("TDM");
+			NetworkManager.Instance.StartRefreshCoRoutine();
 		}
 
+		//return to main menu
 		if(GUI.Button(new Rect(50,105,100,40), "Return")) {
 			ChangeMenu("Main");
 		}
 
-
-		GUILayout.BeginArea(new Rect(Screen.width/2,0,Screen.width/2,Screen.height), "Server list");
-
-		foreach(HostData hd in MasterServer.PollHostList()) {
-
-			GUILayout.BeginHorizontal();
-			GUILayout.Label(hd.gameName);
-			if(GUILayout.Button ("Connect")) {
-				Network.Connect(hd);
+		//if there are servers -> show button for every server, so players can connect to the server
+		if(NetworkManager.Instance.hostdata != null) {
+			for(int i = 0; i < NetworkManager.Instance.hostdata.Length; i++) {
+				if(GUI.Button (new Rect(Screen.width/2, 65f + (30 * i), 300f, 30f), NetworkManager.Instance.hostdata[i].gameName)) {
+					NetworkManager.Instance.ConnectToServer(NetworkManager.Instance.hostdata[i]);
+					ChangeScene.Instance.ChangeSceneTo("Map01");
+				}
 			}
-			GUILayout.EndHorizontal();
-
 		}
-		GUILayout.EndArea();
-
 	}
-}
+
+
+
+
+}//End of class
