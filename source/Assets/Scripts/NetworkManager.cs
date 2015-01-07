@@ -64,7 +64,7 @@ public class NetworkManager : MonoBehaviour {
 
 	void OnServerInitialized() {
 		ChangeScene.Instance.ChangeSceneTo("Map01");
-		Network.Instantiate(Resources.Load ("Prefabs/Player1"), new Vector3(0f,0f,0f), Quaternion.identity, 0);
+		//Network.Instantiate(Resources.Load ("Prefabs/Player1", typeof(GameObject)), new Vector3(0f,0f,0f), Quaternion.identity, 0);
 
 	}
 
