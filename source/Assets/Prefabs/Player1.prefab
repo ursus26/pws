@@ -11,7 +11,6 @@ GameObject:
   - 212: {fileID: 21291222}
   - 50: {fileID: 5091222}
   - 61: {fileID: 6191222}
-  - 114: {fileID: 11491214}
   - 114: {fileID: 11491216}
   - 114: {fileID: 11491218}
   - 114: {fileID: 11491220}
@@ -62,26 +61,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 2.14341974, y: 3.04344177}
   m_Center: {x: .122588158, y: -.0408630371}
---- !u!114 &11491214
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 191222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bed3198c8d58f174a89d5c6ca7367a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 100
-  currentHealth: 0
-  healthSlider: {fileID: 0}
-  healthText: {fileID: 0}
-  damageImage: {fileID: 0}
-  flashSpeed: 5
-  flashColour: {r: 1, g: 0, b: 0, a: .100000001}
-  isDead: 0
-  damaged: 0
 --- !u!114 &11491216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6eed239188a4454c9cf4f41464117eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 406748}
+  player: {fileID: 422134, guid: 57b2adc9918336a4a992f4becb23e871, type: 2}
 --- !u!114 &11491218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,7 +116,7 @@ NetworkView:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191222}
   m_Enabled: 1
-  m_StateSynchronization: 1
+  m_StateSynchronization: 2
   m_Observed: {fileID: 491222}
   m_ViewID:
     m_ID: 0

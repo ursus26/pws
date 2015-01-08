@@ -7,10 +7,18 @@ public class PlayerMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		if(!networkView.isMine) {
+			enabled = false;
+
+		}
+		//DontDestroyOnLoad(gameObject);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+
+
 		MovePlayer ();
 		RotatePlayer ();
 	}

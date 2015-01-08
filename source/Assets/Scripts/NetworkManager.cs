@@ -11,6 +11,8 @@ public class NetworkManager : MonoBehaviour {
 	//public List<Player> Playerlist = new List<Player>();
 
 
+	public GameObject PlayerPrefab;
+
 	//Server list variables
 	float RefreshRequestLength = 3f;
 	public HostData[] hostdata;
@@ -24,16 +26,10 @@ public class NetworkManager : MonoBehaviour {
 
 
 	public void StartServer(string ServerName, int MaxPlayerCount) {
-		Network.InitializeServer(MaxPlayerCount, 25002, false);
+		Network.InitializeServer(MaxPlayerCount, 23465, true);
 		MasterServer.RegisterHost(UniqueGameName, ServerName, "PWS server");
 	}
 
-
-	void OnMasterServerEvent(MasterServerEvent masterServerEvent) {
-		if(masterServerEvent == MasterServerEvent.RegistrationSucceeded) {
-			Debug.Log ("Server has been registered");
-		}
-	}
 
 	public IEnumerator RefreshHostList() {
 		Debug.Log ("Refreshing...");
@@ -62,11 +58,74 @@ public class NetworkManager : MonoBehaviour {
 	}
 
 
+	private void SpawnPlayer() {
+		Network.Instantiate(PlayerPrefab, new Vector3(0f,0f,-1f), Quaternion.identity, 1);
+		Debug.Log ("Player spawned");
+	}
+
+
+	void OnLevelWasLoaded(){
+		if(Network.isServer)
+			SpawnPlayer ();
+	}
+
+
 	void OnServerInitialized() {
 		ChangeScene.Instance.ChangeSceneTo("Map01");
-		//Network.Instantiate(Resources.Load ("Prefabs/Player1", typeof(GameObject)), new Vector3(0f,0f,0f), Quaternion.identity, 0);
+	}
+
+	void OnMasterServerEvent(MasterServerEvent masterServerEvent) {
+		if(masterServerEvent == MasterServerEvent.RegistrationSucceeded) {
+			Debug.Log ("Server has been registered");
+		}
+	}
+
+	void OnConnectedToServer() {
+		SpawnPlayer ();
+	}
+
+	void OnDisconnectFromServer() {
 
 	}
+
+
+	void OnFailedToConnect() {
+
+		ChangeScene.Instance.ChangeSceneTo("MainMenu");
+	}
+
+	/*
+	void OnNetworkInstantiate() {
+
+	}
+
+*/
+	void OnPlayerConnected() {
+
+	}
+
+	void OnPlayerDisconnected(NetworkPlayer player) {
+		Network.RemoveRPCs(player);
+		Network.DestroyPlayerObjects(player);
+		Destroy(PlayerPrefab);
+	}
+
+	void OnApplicationQuit() {
+		if(Network.isServer) {
+			Network.Disconnect(200);
+			MasterServer.UnregisterHost();
+		}
+
+		if(Network.isClient) {
+			Network.Disconnect(200);
+		}
+	}
+
+	/*
+	void OnSerializeNetworkView() {
+
+	}
+*/
 
 
 

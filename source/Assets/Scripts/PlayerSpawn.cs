@@ -31,4 +31,6 @@ public class PlayerSpawn : MonoBehaviour {
 		playerMovement.enabled = true;
 		playerShoot.enabled = true;
 	}
+
+
 }

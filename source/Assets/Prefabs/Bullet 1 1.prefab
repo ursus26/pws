@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11455720}
   - 61: {fileID: 6155720}
   - 50: {fileID: 5055720}
+  - 148: {fileID: 14854944}
   m_Layer: 0
   m_Name: Bullet 1 1
   m_TagString: Untagged
@@ -81,6 +82,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 15
+--- !u!148 &14854944
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155720}
+  m_Enabled: 1
+  m_StateSynchronization: 2
+  m_Observed: {fileID: 455720}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!212 &21255720
 SpriteRenderer:
   m_ObjectHideFlags: 1

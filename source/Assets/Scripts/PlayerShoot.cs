@@ -18,6 +18,11 @@ public class PlayerShoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if(!networkView) {
+			return;
+		}
+
+
 		if (Time.time >= NextShot) {
 			if (Input.GetMouseButton (0)) {
 				SpawnBullet ();

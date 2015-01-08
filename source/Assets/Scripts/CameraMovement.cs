@@ -3,12 +3,12 @@ using System.Collections;
 
 public class CameraMovement : MonoBehaviour {
 
-	private Transform Player; 			//Player object
+	public Transform Player; 			//Player object
 	private Vector3 CameraTarget;		//CameraTarget = the position of the player
 
 	// Use this for initialization
 	void Start () {
-		Player = GameObject.FindGameObjectWithTag ("Player").transform;		//Finds the player object
+
 	}
 	
 	// Update is called once per frame
