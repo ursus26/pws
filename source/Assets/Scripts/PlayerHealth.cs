@@ -73,7 +73,6 @@ public class PlayerHealth : MonoBehaviour
 			// Gaat ie dood
 			Death ();
 		}
-		Debug.Log (this.name);
 	}
 	
 	

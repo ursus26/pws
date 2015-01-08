@@ -1,30 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerHealth.cs">
-    <Files>
-<<<<<<< HEAD
-      <File FileName="Assets\Scripts\PlayerSpawn.cs" Line="15" Column="39" />
-      <File FileName="Assets\Scripts\PlayerHealth.cs" Line="102" Column="3" />
-      <File FileName="Assets\Scripts\BulletCollision.js" Line="12" Column="31" />
-      <File FileName="Assets\Scripts\CameraMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerShoot.cs" Line="30" Column="21" />
-=======
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BulletCollision.js">
     <Files>
+      <File FileName="Assets\Scripts\BulletCollision.js" Line="19" Column="3" />
+      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="53" Column="1" />
+      <File FileName="Assets\Scripts\PauseMenu.cs" Line="39" Column="32" />
+      <File FileName="Assets\Scripts\PlayerShoot.cs" Line="38" Column="3" />
+      <File FileName="Assets\Scripts\PlayerHealth.cs" Line="92" Column="3" />
       <File FileName="Assets\Scripts\EnemyAI.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerShoot.cs" Line="31" Column="20" />
-      <File FileName="Assets\Scripts\BulletCollision.js" Line="10" Column="24" />
->>>>>>> origin/master
-=======
-      <File FileName="Assets\PlayerShoot.cs" Line="36" Column="1" />
-      <File FileName="Assets\BulletMove.cs" Line="1" Column="1" />
-      <File FileName="Assets\PlayerMovement.cs" Line="53" Column="1" />
-      <File FileName="Assets\CameraMovement.cs" Line="12" Column="46" />
-      <File FileName="Assets\BulletCollision.js" Line="9" Column="3" />
-      <File FileName="Assets\PlayerColliderMovement.js" Line="1" Column="1" />
->>>>>>> 1e423f667caea318fd57a78b281095ba9888e581
+      <File FileName="Assets\Scripts\PlayerSpawn.cs" Line="34" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

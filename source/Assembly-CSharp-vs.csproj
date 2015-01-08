@@ -46,9 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Map Editor\scripts\grid.cs" />
-     <Compile Include="Assets\Map Editor\scripts\gridwindow.cs" />
-     <Compile Include="Assets\Map Editor\scripts\tileset.cs" />
      <Compile Include="Assets\Scripts\BulletMove.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\ChangeScene.cs" />
