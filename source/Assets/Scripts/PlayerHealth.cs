@@ -4,80 +4,73 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
-	public int startingHealth = 100;                            // The amount of health the player starts the game with.
-	public int currentHealth;                                   // The current health the player has.
-	public Slider healthSlider;                                 // Reference to the UI's health bar.
-	public Text healthText;
-	public Image damageImage;                                   // Reference to an image to flash on the screen on being hurt.
-	//public AudioClip deathClip;                                 // The audio clip to play when the player dies.
-	public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
-	public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
+	public int startingHealth = 100;                            // Begin health
+	public int currentHealth;                                   // Huidige health
+	public Slider healthSlider;                                 // De health bar
+	public Text healthText;										// Tekst van de HUD die zegt hoeveel procent iemand heeft
+	public Image damageImage;                                   // Rode flash bij damage
+	public float flashSpeed = 5f;                               // Hoe snel de damage image weer wegvaagt
+	public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // Kleur van de damage flash
 	
 	
-	//Animator anim;                                              // Reference to the Animator component.
-	//AudioSource playerAudio;                                    // Reference to the AudioSource component.
-	PlayerMovement playerMovement;                              // Reference to the player's movement.
-	PlayerShoot playerShoot;                              // Reference to the PlayerShooting script.
+	PlayerMovement playerMovement; 
+	PlayerShoot playerShoot;       
 	PlayerSpawn playerSpawn;
-	public bool isDead;                                                // Whether the player is dead.
-	public bool damaged;                                               // True when the player gets damaged.
+	EnemyAI enemyAI;
+	public bool isDead;                                         // Dood ja/nee
+	public bool damaged;                                        // Op dit moment damage ja/nee
 	
 	
 	void Awake ()
 	{
-		// Setting up the references.
-		//anim = GetComponent <Animator> ();
-		//playerAudio = GetComponent <AudioSource> ();
 		playerMovement = GetComponent <PlayerMovement> ();
 		playerShoot = GetComponentInChildren <PlayerShoot> ();
 		playerSpawn = GetComponent<PlayerSpawn> ();
+		enemyAI = GetComponent<EnemyAI> ();
 		
 		// Set the initial health of the player.
-		currentHealth = startingHealth;
-		healthSlider.value = currentHealth;
-		healthText.text = currentHealth.ToString() + "%";
+		currentHealth = startingHealth;							// Zet huidige health naar max
+		healthSlider.value = currentHealth;						// Laat dit zien in de bar ..
+		healthText.text = currentHealth.ToString() + "%";		// .. en als getal
 	}
 	
 	void Update ()
 	{
-		// If the player has just been damaged...
+		// Wanneer de speler damage krijgt
 		if(damaged)
 		{
-			// ... set the colour of the damageImage to the flash colour.
+			// Geef de damage image
 			damageImage.color = flashColour;
 		}
-		// Otherwise...
+		// Anders
 		else
 		{
-			// ... transition the colour back to clear.
+			// Vaag het weg
 			damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
 		}
 		
-		// Reset the damaged flag.
+		// En dan wordt er geen damage meer gedaan
 		damaged = false;
 	}
 	
 	
 	public void TakeDamage (int amount)
 	{
-		// Set the damaged flag so the screen will flash.
+		// Krijgt op dit moment damage
 		damaged = true;
 		
-		// Reduce the current health by the damage amount.
+		// Haal health er af
 		if (currentHealth > 0) {
 			currentHealth -= amount;
 		}
 		
-		// Set the health bar's value to the current health.
+		// Laat de verandering zien in de HUD
 		SetHealth (currentHealth);
-		
-		// Play the hurt sound effect.
-		//playerAudio.Play ();
-		
-		// If the player has lost all it's health and the death flag hasn't been set yet...
+				
+		// Als health klein of gelijk aan 0 is
 		if(currentHealth <= 0 && !isDead)
 		{
-			// ... it should die.
+			// Gaat ie dood
 			Death ();
 		}
 	}
@@ -85,25 +78,21 @@ public class PlayerHealth : MonoBehaviour
 	
 	void Death ()
 	{
-		// Set the death flag so this function won't be called again.
+		// Is op dit moment dood
 		isDead = true;
-		
-		// Turn off any remaining shooting effects.
-		//playerShoot.DisableEffects ();
-		
-		// Tell the animator that the player is dead.
-		//anim.SetTrigger ("Die");
-		
-		// Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
-		//playerAudio.clip = deathClip;
-		//playerAudio.Play ();
-		
-		// Turn off the movement and shooting scripts.
-		playerMovement.enabled = false;
-		playerShoot.enabled = false;
+
+		// Zet bewegen en schieten uit
+		if (this.name == "Player") {
+			playerMovement.enabled = false;
+			playerShoot.enabled = false;
+		} else if (this.name == "Enemy") {
+			enemyAI.enabled = false;
+		}
+
 		// HIER MOET EEN RESPAWN SCHERM KOMEN, EN ALS ER OP RESPAWN WORDT GEKLIKT KRIJG JE DE ONDERSTAANDE REGEL
 		playerSpawn.Respawn();
 	}   
+
 	public void SetHealth(int health){
 		currentHealth = health;
 		healthText.text = currentHealth.ToString() + "%";

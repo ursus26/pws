@@ -7,17 +7,17 @@ public class PlayerMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+
 		if(!networkView.isMine) {
 			enabled = false;
 
 		}
 		//DontDestroyOnLoad(gameObject);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-
 
 		MovePlayer ();
 		RotatePlayer ();
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour {
 			transform.Translate(Vector3.down * 5f * Time.deltaTime, Space.World);
 		}
 	}
-		
+
 
 	void RotatePlayer(){
 		Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;	//Difference of mousepos and playerpos
@@ -52,5 +52,5 @@ public class PlayerMovement : MonoBehaviour {
 		float rotation = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;						//Calculate the angle to rotate around
 		transform.rotation = Quaternion.Euler(0, 0, rotation - 90);										//Rotates the player
 	}
-	
+
 }//End of class

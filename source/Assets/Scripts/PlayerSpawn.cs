@@ -7,12 +7,14 @@ public class PlayerSpawn : MonoBehaviour {
 	PlayerMovement playerMovement;
 	PlayerShoot playerShoot;
 	GameObject[] spawnAreas;
+	EnemyAI enemyAI;
 
 	// Use this for initialization
 	void Awake () {
 		playerHealth = GetComponent<PlayerHealth>();
 		playerMovement = GetComponent<PlayerMovement>();
 		playerShoot = GetComponentInChildren<PlayerShoot>();
+		enemyAI = GetComponent<EnemyAI> ();
 
 	}
 	
@@ -28,8 +30,12 @@ public class PlayerSpawn : MonoBehaviour {
 		renderer.enabled = true;																					// Maakt de speler weer zichtbaar
 
 		playerHealth.SetHealth (100);																				// Geeft weer 100 levens aan de speler
-		playerMovement.enabled = true;
-		playerShoot.enabled = true;
+		if (this.name == "Player") {
+			playerMovement.enabled = true;
+			playerShoot.enabled = true;
+		} else if (this.name == "Enemy") {
+			enemyAI.enabled = true;
+		}
 	}
 
 
