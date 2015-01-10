@@ -8,10 +8,12 @@ public class NetworkManager : MonoBehaviour {
 	string UniqueGameName = "KKC_PWS_2015_Team_Death_Match";
 	public string PlayerName;
 	public string MatchName;
-	//public List<Player> Playerlist = new List<Player>();
 
-
+	private GameObject LocalPlayer;
+	private Camera cam;
 	public GameObject PlayerPrefab;
+	public GameObject PlayerCamera;
+	private Camera originalCamera;
 
 	//Server list variables
 	float RefreshRequestLength = 3f;
@@ -22,6 +24,7 @@ public class NetworkManager : MonoBehaviour {
 	void Start () {
 		Instance = this;
 		DontDestroyOnLoad(gameObject);
+
 	}
 
 
@@ -59,7 +62,20 @@ public class NetworkManager : MonoBehaviour {
 
 
 	private void SpawnPlayer() {
-		Network.Instantiate(PlayerPrefab, new Vector3(0f,0f,-1f), Quaternion.identity, 1);
+		originalCamera = GameObject.Find("MainCamera").camera;
+		originalCamera.enabled = false;
+
+		LocalPlayer = (GameObject)Network.Instantiate(PlayerPrefab, new Vector3(0f,0f,-1f), Quaternion.identity, 1);
+		cam = (Camera)Camera.Instantiate(originalCamera);
+
+			
+
+		LocalPlayer.GetComponent<PlayerMovement>().enabled = true;
+		LocalPlayer.GetComponent<PlayerShoot>().enabled = true;
+		LocalPlayer.GetComponent<Menu>().enabled = true;
+		LocalPlayer.GetComponent<PlayerMovement>().setCamera(cam);
+		cam.GetComponent<CameraMovement>().setCameraTarget(LocalPlayer);
+
 		Debug.Log ("Player spawned");
 	}
 
@@ -107,7 +123,6 @@ public class NetworkManager : MonoBehaviour {
 	void OnPlayerDisconnected(NetworkPlayer player) {
 		Network.RemoveRPCs(player);
 		Network.DestroyPlayerObjects(player);
-		Destroy(PlayerPrefab);
 	}
 
 	void OnApplicationQuit() {

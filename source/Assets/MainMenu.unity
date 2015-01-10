@@ -1301,6 +1301,7 @@ MonoBehaviour:
   PlayerName: 
   MatchName: 
   PlayerPrefab: {fileID: 191222, guid: 6342169d4ec96194398ec0ca78617e71, type: 2}
+  PlayerCamera: {fileID: 119860, guid: 4da2b6851641a0f4fa4b70a6aa20fda7, type: 2}
 --- !u!4 &2091487821
 Transform:
   m_ObjectHideFlags: 0

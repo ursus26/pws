@@ -34,7 +34,8 @@ public class PlayerShoot : MonoBehaviour {
 
 
 	void SpawnBullet(){
-		Instantiate(Bullet, transform.position, transform.rotation);	//Spawns a bullet	
+		//Instantiate(Bullet, transform.position, transform.rotation);	//Spawns a bullet	
+		Network.Instantiate(Bullet, transform.position, transform.rotation, 0);
 	}
 
 }//End of class
