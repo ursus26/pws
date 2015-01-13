@@ -10,9 +10,9 @@ public class NetworkManager : MonoBehaviour {
 	public string MatchName;
 
 	private GameObject LocalPlayer;
-	private Camera cam;
+
 	public GameObject PlayerPrefab;
-	public GameObject PlayerCamera;
+
 	private Camera originalCamera;
 
 	//Server list variables
@@ -63,18 +63,14 @@ public class NetworkManager : MonoBehaviour {
 
 	private void SpawnPlayer() {
 		originalCamera = GameObject.Find("MainCamera").camera;
-		originalCamera.enabled = false;
-
 		LocalPlayer = (GameObject)Network.Instantiate(PlayerPrefab, new Vector3(0f,0f,-1f), Quaternion.identity, 1);
-		cam = (Camera)Camera.Instantiate(originalCamera);
-
-			
+				
 
 		LocalPlayer.GetComponent<PlayerMovement>().enabled = true;
 		LocalPlayer.GetComponent<PlayerShoot>().enabled = true;
 		LocalPlayer.GetComponent<Menu>().enabled = true;
-		LocalPlayer.GetComponent<PlayerMovement>().setCamera(cam);
-		cam.GetComponent<CameraMovement>().setCameraTarget(LocalPlayer);
+		LocalPlayer.GetComponent<PlayerMovement>().setCamera(originalCamera);
+		originalCamera.GetComponent<CameraMovement>().setCameraTarget(LocalPlayer);
 
 		Debug.Log ("Player spawned");
 	}

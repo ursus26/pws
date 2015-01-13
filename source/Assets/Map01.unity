@@ -30104,7 +30104,6 @@ GameObject:
   - 4: {fileID: 707973907}
   - 20: {fileID: 707973906}
   - 114: {fileID: 707973905}
-  - 148: {fileID: 707973904}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -30112,19 +30111,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!148 &707973904
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 14819860, guid: 4da2b6851641a0f4fa4b70a6aa20fda7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1726978059}
-  m_GameObject: {fileID: 707973903}
-  m_Enabled: 1
-  m_StateSynchronization: 2
-  m_Observed: {fileID: 707973907}
-  m_ViewID:
-    m_ID: 1
-    m_Type: 1
 --- !u!114 &707973905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30137,6 +30123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa658ccaa3722745b1b751e566d123f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TargetObject: {fileID: 0}
 --- !u!20 &707973906
 Camera:
   m_ObjectHideFlags: 0
@@ -74981,7 +74968,8 @@ Prefab:
       propertyPath: m_Name
       value: MainCamera
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 14819860, guid: 4da2b6851641a0f4fa4b70a6aa20fda7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4da2b6851641a0f4fa4b70a6aa20fda7, type: 2}
   m_RootGameObject: {fileID: 707973903}
   m_IsPrefabParent: 0

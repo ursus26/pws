@@ -23,6 +23,12 @@ public class PlayerHealth : MonoBehaviour
 	
 	void Awake ()
 	{
+		healthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>() as Slider;
+
+		healthText = GameObject.Find("HealthText").GetComponent<Text>() as Text;
+		damageImage = GameObject.Find("DamageImage").GetComponent<Image>() as Image;
+
+		
 		playerMovement = GetComponent <PlayerMovement> ();
 		playerShoot = GetComponentInChildren <PlayerShoot> ();
 		playerSpawn = GetComponent<PlayerSpawn> ();
