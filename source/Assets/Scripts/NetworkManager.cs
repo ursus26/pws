@@ -20,21 +20,21 @@ public class NetworkManager : MonoBehaviour {
 	public HostData[] hostdata;
 
 
-	// Use this for initialization
-	void Start () {
-		Instance = this;
-		DontDestroyOnLoad(gameObject);
-
+	void Awake() {
+		if(Instance) {
+			DestroyImmediate(gameObject);
+		} else {
+			DontDestroyOnLoad(gameObject);
+			Instance = this;
+		}
 	}
-
 
 	public void StartServer(string ServerName, int MaxPlayerCount) {
 		Network.InitializeServer(MaxPlayerCount, 23465, true);
 		MasterServer.RegisterHost(UniqueGameName, ServerName, "PWS server");
 	}
 
-
-	public IEnumerator RefreshHostList() {
+	private IEnumerator RefreshHostList() {
 		Debug.Log ("Refreshing...");
 
 		MasterServer.RequestHostList(UniqueGameName);
@@ -50,8 +50,7 @@ public class NetworkManager : MonoBehaviour {
 		}
 	}
 
-
-	public void StartRefreshCoRoutine() {
+	public void RefreshServerList() {
 		StartCoroutine("RefreshHostList");
 	}
 
@@ -60,21 +59,19 @@ public class NetworkManager : MonoBehaviour {
 		Debug.Log ("Connect to server");
 	}
 
-
 	private void SpawnPlayer() {
 		originalCamera = GameObject.Find("MainCamera").camera;
 		LocalPlayer = (GameObject)Network.Instantiate(PlayerPrefab, new Vector3(0f,0f,-1f), Quaternion.identity, 1);
-				
-
-		LocalPlayer.GetComponent<PlayerMovement>().enabled = true;
+			
 		LocalPlayer.GetComponent<PlayerShoot>().enabled = true;
 		LocalPlayer.GetComponent<Menu>().enabled = true;
+		LocalPlayer.GetComponent<PlayerMovement>().enabled = true;
 		LocalPlayer.GetComponent<PlayerMovement>().setCamera(originalCamera);
+
 		originalCamera.GetComponent<CameraMovement>().setCameraTarget(LocalPlayer);
 
 		Debug.Log ("Player spawned");
 	}
-
 
 	void OnLevelWasLoaded(){
 		if(Network.isServer)

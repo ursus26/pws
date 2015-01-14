@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class MenuManager : MonoBehaviour {
@@ -41,6 +41,10 @@ public class MenuManager : MonoBehaviour {
 		//Button that goes to the next menu where players can join a match/server
 		if(GUI.Button(new Rect(50,65,100,40), "Join server")) {
 			ChangeMenu("Server List");
+			NetworkManager.Instance.RefreshServerList();
+
+
+			
 		}
 	}
 
@@ -65,7 +69,7 @@ public class MenuManager : MonoBehaviour {
 
 		//Refresh the list containing all servers that are online
 		if(GUI.Button(new Rect(50,65,100,40), "Refresh")) {
-			NetworkManager.Instance.StartRefreshCoRoutine();
+			NetworkManager.Instance.RefreshServerList();
 		}
 
 		//return to main menu

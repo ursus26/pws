@@ -17,7 +17,6 @@ public class CameraMovement : MonoBehaviour {
 
 		if(targetset == true) {
 
-		Debug.Log ("Camera update");
 		//Define the position of the cameratarget
 		Vector3 TargetPosition = new Vector3 (TargetObject.transform.position.x, TargetObject.transform.position.y, TargetObject.transform.position.z - 10);
 

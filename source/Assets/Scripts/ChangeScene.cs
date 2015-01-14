@@ -5,9 +5,13 @@ public class ChangeScene : MonoBehaviour {
 
 	public static ChangeScene Instance;
 
-	void Start () {
-		Instance = this;
-		DontDestroyOnLoad(gameObject);
+	void Awake() {
+		if(Instance) {
+			DestroyImmediate(gameObject);
+		} else {
+			Instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
 	}
 
 	public void ChangeSceneTo(string SceneName) {
