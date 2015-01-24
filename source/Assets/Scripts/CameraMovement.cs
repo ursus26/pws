@@ -3,19 +3,40 @@ using System.Collections;
 
 public class CameraMovement : MonoBehaviour {
 
-	private Transform Player; 			//Player object
-	private Vector3 CameraTarget;		//CameraTarget = the position of the player
+	public GameObject TargetObject; 		//Player object
+	//public Vector3 TargetPosition;		//CameraTarget = the position of the player
+	bool targetset = false;
 
 	// Use this for initialization
 	void Start () {
-		Player = GameObject.FindGameObjectWithTag ("Player").transform;		//Finds the player object
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		CameraTarget = new Vector3 (Player.position.x, Player.position.y, Player.position.z - 10);//Define the position of the cameratarget
-		transform.position = Vector3.Lerp (transform.position, CameraTarget, Time.deltaTime * 8);			//Move the camera
-	}																										
+
+		if(targetset == true) {
+
+		//Define the position of the cameratarget
+		Vector3 TargetPosition = new Vector3 (TargetObject.transform.position.x, TargetObject.transform.position.y, TargetObject.transform.position.z - 10);
+
+		//Move the camera
+		transform.position = Vector3.Lerp (transform.position, TargetPosition, Time.deltaTime * 8);	
+		//transform.eulerAngles = new Vector3(0f,0f,0f);
+
+		}
+	}		
+
+	public void setCameraTarget(GameObject targetobject) {
+		TargetObject = targetobject;
+		if (TargetObject == null) {
+			Debug.Log ("Target = null");
+		} else {
+
+		Debug.Log ("camera is set");
+		}
+		targetset = true;
+	}
 
 
 }

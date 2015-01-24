@@ -4,10 +4,18 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-	private bool LockMovement;
+	private Camera test;
+
+	public void setCamera(Camera tt) {
+		test = tt;
+	}
+
 
 	// Use this for initialization
 	void Start () {
+
+
+		//DontDestroyOnLoad(gameObject);
 
 	}
 	
@@ -20,7 +28,6 @@ public class PlayerMovement : MonoBehaviour {
 
 
 	void MovePlayer(){
-
 
 		if (Input.GetKey (KeyCode.D) | Input.GetKey (KeyCode.RightArrow)) {			//if D or Right arrow is pressed->move right in the world
 			transform.Translate(Vector3.right * 5f * Time.deltaTime, Space.World);
@@ -37,16 +44,16 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetKey (KeyCode.S) | Input.GetKey (KeyCode.DownArrow) ) {			//if S or Down arrow is pressed->move down in the world
 			transform.Translate(Vector3.down * 5f * Time.deltaTime, Space.World);
 		}
-
 	}
 
+
 	void RotatePlayer(){
-		Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;	//Difference of mousepos and playerpos
+
+		Vector3 difference = test.ScreenToWorldPoint(Input.mousePosition) - transform.position;	//Difference of mousepos and playerpos
 		difference.Normalize();																			//makes the sum of Vector3 = 1
 
 		float rotation = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;						//Calculate the angle to rotate around
 		transform.rotation = Quaternion.Euler(0, 0, rotation - 90);										//Rotates the player
 	}
-
 
 }//End of class

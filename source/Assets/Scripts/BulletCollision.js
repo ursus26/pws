@@ -1,19 +1,33 @@
-﻿function OnTriggerEnter2D(obj : Collider2D) {
-		var player = GameObject.Find("Player");
-		var playerHealth = player.GetComponent("PlayerHealth");
+﻿
+
+
+
+function OnTriggerEnter2D(obj : Collider2D) {
+
+		var cs = GameObject.Find("Player1");
+		//var playerHealth = cs.GetComponent("PlayerHealth");
+		//var playerSpawn = cs.GetComponent("PlayerSpawn");
+
+	
 		
-		
-		var name = obj.gameObject.transform.parent.name;
 		var tag = obj.gameObject.tag;
 		
 
 		if (tag == "Wall"){
-			Destroy (this.gameObject);
-			playerHealth.TakeDamage(5);
+			Network.Destroy(GetComponent(NetworkView).id);
+			//playerHealth.TakeDamage(5);
 		}
 		
-		if (name == "Player" || name == "Enemy"){
-			Destroy (this.gameObject);
-		    obj.transform.parent.GetComponent("PlayerHealth").TakeDamage(5);
+
+		if (tag == "Player" || tag == "Enemy"){
+			Network.Destroy(GetComponent(NetworkView).id);
+			
+			//Destroy (this.gameObject);
+			//obj.playerHealth.TakeDamage();
 		}
+		
+		/* if (tag == "Player" | tag == "Enemy"){
+			Destroy (this.gameObject);
+		} */
+
 	}
