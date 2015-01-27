@@ -62,8 +62,8 @@ public class NetworkManager : MonoBehaviour {
 	private void SpawnPlayer() {
 		originalCamera = GameObject.Find("MainCamera").camera;
 		LocalPlayer = (GameObject)Network.Instantiate(PlayerPrefab, new Vector3(0f,0f,-1f), Quaternion.identity, 1);
-			
-		LocalPlayer.GetComponent<PlayerShoot>().enabled = true;
+		LocalPlayer.GetComponentInChildren<PlayerShoot>().enabled = true;	
+		//LocalPlayer.GetComponent<PlayerShoot>().enabled = true;
 		LocalPlayer.GetComponent<Menu>().enabled = true;
 		LocalPlayer.GetComponent<PlayerMovement>().enabled = true;
 		LocalPlayer.GetComponent<PlayerMovement>().setCamera(originalCamera);
