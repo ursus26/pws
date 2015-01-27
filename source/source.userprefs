@@ -1,24 +1,14 @@
 ﻿<Properties>
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerHealth.cs">
-    <Files>
-      <File FileName="Assets\Scripts\PlayerHealth.cs" Line="37" Column="16" />
-      <File FileName="Assets\Scripts\PlayerShoot.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BulletCollision.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PauseMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EnemyAI.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerSpawn.cs" Line="1" Column="1" />
-=======
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NetworkManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BulletCollision.cs">
     <Files>
-      <File FileName="Assets\Scripts\NetworkManager.cs" Line="70" Column="3" />
-      <File FileName="Assets\Scripts\ChangeScene.cs" Line="8" Column="2" />
-      <File FileName="Assets\Scripts\MenuManager.cs" Line="72" Column="45" />
-      <File FileName="Assets\Scripts\CameraMovement.cs" Line="20" Column="3" />
->>>>>>> origin/master
+      <File FileName="Assets\Scripts\BulletCollision.cs" Line="19" Column="6" />
+      <File FileName="Assets\Scripts\PlayerShoot.cs" Line="15" Column="52" />
+      <File FileName="Assets\Scripts\BulletCollision.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerHealth.cs" Line="28" Column="33" />
+      <File FileName="Assets\Scripts\NetworkManager.cs" Line="83" Column="44" />
+      <File FileName="Assets\Scripts\ChangeScene.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Menu.cs" Line="53" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

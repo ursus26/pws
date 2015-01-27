@@ -10,9 +10,10 @@ GameObject:
   - 4: {fileID: 453878}
   - 50: {fileID: 5053878}
   - 212: {fileID: 21253878}
+  - 61: {fileID: 6146412}
   m_Layer: 0
   m_Name: Metal
-  m_TagString: Bullet
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,6 +45,17 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!61 &6146412
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153878}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 1, y: 1}
+  m_Center: {x: 0, y: 0}
 --- !u!212 &21253878
 SpriteRenderer:
   m_ObjectHideFlags: 1

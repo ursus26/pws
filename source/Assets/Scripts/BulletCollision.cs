@@ -4,26 +4,25 @@ using System.Collections;
 public class BulletCollision : MonoBehaviour {
 
 	private GameObject zObject;
-	PlayerHealth ph; 
+	PlayerHealth playerHealth; 
 
 
-	void start() {
-
-
+	void Awake() {
 	}
 
 
 	void OnTriggerEnter2D(Collider2D other) {
-		//zObject = other.gameObject;
+		playerHealth = GameObject.Find(other.name).GetComponent<PlayerHealth>();
+		zObject = other.gameObject;
 
 		if(other.tag == "Wall") {
-			//zObject.GetComponent<PlayerHealth>().TakeDamage(5);
-
+			//playerHealth.TakeDamage(5);
+			Debug.Log("test");
 			Network.Destroy(GetComponent<NetworkView>().viewID);
 		}
 
 		if(other.tag == "Player") {
-			other.GetComponent<PlayerHealth>().TakeDamage(5);
+			playerHealth.TakeDamage(5);
 			Network.Destroy(GetComponent<NetworkView>().viewID);
 		}
 	}
