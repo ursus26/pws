@@ -4,10 +4,10 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-	private Camera test;
+	private Camera mainCamera;
 
 	public void setCamera(Camera tt) {
-		test = tt;
+		mainCamera = tt;
 	}
 
 
@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
 
 
-		//DontDestroyOnLoad(gameObject);
+
 
 	}
 	
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	void RotatePlayer(){
 
-		Vector3 difference = test.ScreenToWorldPoint(Input.mousePosition) - transform.position;	//Difference of mousepos and playerpos
+		Vector3 difference = mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;	//Difference of mousepos and playerpos
 		difference.Normalize();																			//makes the sum of Vector3 = 1
 
 		float rotation = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;						//Calculate the angle to rotate around

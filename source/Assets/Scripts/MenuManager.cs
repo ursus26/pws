@@ -53,7 +53,7 @@ public class MenuManager : MonoBehaviour {
 
 		//Button that starts a new server
 		if(GUI.Button(new Rect(50,25,100,40), "Start")) {
-			NetworkManager.Instance.StartServer(Name, 8);
+			NetworkManager.Instance.StartServer(Name, 2);
 
 		}
 

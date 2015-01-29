@@ -1,8 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CameraMovement.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BulletMove.cs">
     <Files>
-      <File FileName="Assets\Scripts\CameraMovement.cs" Line="16" Column="18" />
+      <File FileName="Assets\Scripts\ChangeScene.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CameraMovement.cs" Line="27" Column="2" />
+      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="50" Column="22" />
+      <File FileName="Assets\Scripts\PlayerShoot.cs" Line="35" Column="88" />
+      <File FileName="Assets\Scripts\BulletMove.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
