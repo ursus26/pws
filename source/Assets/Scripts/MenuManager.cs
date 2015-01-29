@@ -3,12 +3,11 @@ using System.Collections;
 
 public class MenuManager : MonoBehaviour {
 
-	// Use this for initialization
-	public string CurrentMenu;
-	public string Name;
+	public string CurrentMenu;		//Menu the player is in
+	public string Name;				//Server name			
 
 	void Start () {
-		CurrentMenu = "Main";
+		CurrentMenu = "Main";	
 	}
 	
 	void OnGUI() {
@@ -89,8 +88,5 @@ public class MenuManager : MonoBehaviour {
 			}
 		}
 	}
-
-
-
 
 }//End of class

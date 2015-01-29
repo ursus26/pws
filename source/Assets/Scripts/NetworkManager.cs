@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class NetworkManager : MonoBehaviour {
 
-	public static NetworkManager Instance;				//Instance of this class
+	public static NetworkManager Instance;						//Instance of this class
 	string UniqueGameName = "KKC_PWS_2015_Team_Death_Match";	//Unique name
 
 	private GameObject LocalPlayer;					//Local player object that the user controls
@@ -13,7 +13,7 @@ public class NetworkManager : MonoBehaviour {
 
 	//Server list variables
 	float RefreshRequestLength = 3f;				//Time it's searching for servers
-	public HostData[] hostdata;					//Data of the found hosts
+	public HostData[] hostdata;						//Data of the found hosts
 
 
 	void Awake() {
@@ -27,7 +27,7 @@ public class NetworkManager : MonoBehaviour {
 	}
 
 	public void StartServer(string ServerName, int MaxPlayerCount) {
-		Network.InitializeServer(MaxPlayerCount, 23465, true);			//Init a server
+		Network.InitializeServer(MaxPlayerCount, 23465, true);					//Init a server
 		MasterServer.RegisterHost(UniqueGameName, ServerName, "PWS server");	//Register the room of the host
 	}
 
@@ -99,21 +99,12 @@ public class NetworkManager : MonoBehaviour {
 		SpawnPlayer ();
 	}
 
-	void OnDisconnectFromServer() {
-		ChangeScene.Instance.ChangeSceneTo("MainMenu");
-	}
-
-
 	void OnFailedToConnect() {
 
 		ChangeScene.Instance.ChangeSceneTo("MainMenu");
 	}
 
-	void OnPlayerConnected() {
-
-	}
-
-	void OnPlayerDisconnected(NetworkPlayer player) {
+	void OnPlayerDisconnected(NetworkPlayer player) {//Player disconnect -> remove all objects of that player
 		Network.RemoveRPCs(player);
 		Network.DestroyPlayerObjects(player);
 	}

@@ -6,6 +6,8 @@ public class ChangeScene : MonoBehaviour {
 	public static ChangeScene Instance;
 
 	void Awake() {
+
+		//Only accepts 1 instance of this class, other instances will be deleted
 		if(Instance) {
 			DestroyImmediate(gameObject);
 		} else {
@@ -14,11 +16,11 @@ public class ChangeScene : MonoBehaviour {
 		}
 	}
 
-	public void ChangeSceneTo(string SceneName) {
+	public void ChangeSceneTo(string SceneName) {	//Change the scene
 		Application.LoadLevel(SceneName);
 	}
 
-	public void ExitGame() {
+	public void ExitGame() {	//Close the game
 		Application.Quit();
 	}
 }

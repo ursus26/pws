@@ -5,21 +5,15 @@ public class BulletCollision : MonoBehaviour {
 
 	PlayerHealth playerHealth; 
 
-	void Awake() {
-	}
-
-
 	void OnTriggerEnter2D(Collider2D other) {
 		playerHealth = GameObject.Find(other.name).GetComponent<PlayerHealth>();
 
 
-		if(other.tag == "Wall") {
-			//playerHealth.TakeDamage(5);
-			//Network.Destroy(GetComponent<NetworkView>().viewID);
+		if(other.tag == "Wall") {	//When bullet hits the wall
 			NetworkManager.Instance.DestroyNetworkObject(gameObject);
 		}
 
-		if(other.tag == "Player" && !networkView.isMine) {
+		if(other.tag == "Player" && !networkView.isMine) { //When bullet hits an player and is not himself
 			playerHealth.TakeDamage(20);
 			NetworkManager.Instance.DestroyNetworkObject(gameObject);
 		}
