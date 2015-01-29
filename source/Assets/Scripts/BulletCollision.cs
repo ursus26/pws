@@ -13,8 +13,11 @@ public class BulletCollision : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		playerHealth = GameObject.Find(other.name).GetComponent<PlayerHealth>();
+		zObject = other.gameObject;
 
 		if(other.tag == "Wall") {
+			//playerHealth.TakeDamage(5);
+			Debug.Log("test");
 			Network.Destroy(GetComponent<NetworkView>().viewID);
 		}
 
