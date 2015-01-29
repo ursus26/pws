@@ -7,6 +7,7 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject shootPosition;
 	public float Cooldown = .1f;	//cooldown of shooting a bullet in miliseconds
 	private float NextShot;			//Time for the next shot
+	public AudioClip GunShot;
 
 
 
@@ -25,8 +26,10 @@ public class PlayerShoot : MonoBehaviour {
 
 
 		if (Time.time >= NextShot) {
-			if (Input.GetMouseButton (0)) {
+			if (Input.GetMouseButtonDown (0)) {
 				SpawnBullet ();
+				GetComponent<AudioSource>().Play();
+				audio.PlayOneShot(GunShot);
 				NextShot = Time.time + Cooldown;
 			}
 		}

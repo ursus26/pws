@@ -17,6 +17,9 @@ public class Menu : MonoBehaviour {
 	private PlayerShoot ShootScript;
 
 
+	public AudioClip BackgroundMusic;
+
+
 	// Use this for initialization
 	void Start () {
 		GameMenuOpen = false;
@@ -24,6 +27,10 @@ public class Menu : MonoBehaviour {
 		//get Components
 		MovementScript = GetComponent<PlayerMovement>();
 		ShootScript = GetComponentInChildren<PlayerShoot>();
+
+		//Start background music
+		audio.loop = true;
+		audio.PlayOneShot(BackgroundMusic);
 	}
 	
 	// Update is called once per frame

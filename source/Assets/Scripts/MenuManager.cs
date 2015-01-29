@@ -41,10 +41,12 @@ public class MenuManager : MonoBehaviour {
 		//Button that goes to the next menu where players can join a match/server
 		if(GUI.Button(new Rect(50,65,100,40), "Join server")) {
 			ChangeMenu("Server List");
-			NetworkManager.Instance.RefreshServerList();
+			NetworkManager.Instance.RefreshServerList();			
+		}
 
-
-			
+		//Button that quits the game
+		if(GUI.Button (new Rect(50,105,100,40), "Quit")) {
+			Application.Quit ();
 		}
 	}
 

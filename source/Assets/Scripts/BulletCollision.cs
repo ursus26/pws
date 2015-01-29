@@ -13,15 +13,14 @@ public class BulletCollision : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		playerHealth = GameObject.Find(other.name).GetComponent<PlayerHealth>();
-		zObject = other.gameObject;
+
 
 		if(other.tag == "Wall") {
 			//playerHealth.TakeDamage(5);
-			Debug.Log("test");
 			Network.Destroy(GetComponent<NetworkView>().viewID);
 		}
 
-		if(other.tag == "Player") {
+		if(other.tag == "Player" && !networkView.isMine) {
 			playerHealth.TakeDamage(5);
 			Network.Destroy(GetComponent<NetworkView>().viewID);
 		}
