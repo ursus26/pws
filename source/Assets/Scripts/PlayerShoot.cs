@@ -3,11 +3,11 @@ using System.Collections;
 
 public class PlayerShoot : MonoBehaviour {
 
-	public Transform Bullet;
-	public GameObject shootPosition;
+	public Transform Bullet;		//Bullet prefab
+	public GameObject shootPosition;//Position the bullet spawns
 	public float Cooldown = .1f;	//cooldown of shooting a bullet in miliseconds
 	private float NextShot;			//Time for the next shot
-	public AudioClip GunShot;
+	public AudioClip GunShot;		//Audio clip of the gunshot
 
 
 
@@ -19,39 +19,21 @@ public class PlayerShoot : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
-		if(!networkView) {
-			return;
-		}
-
-
 		if (Time.time >= NextShot) {
-			if (Input.GetMouseButtonDown (0)) {
+
+			if (Input.GetMouseButtonDown (0)) {//Shoots the bullet when left mouse button has been pressed.
 				SpawnBullet ();
-				GetComponent<AudioSource>().Play();
-				audio.PlayOneShot(GunShot);
 				NextShot = Time.time + Cooldown;
 			}
+
 		}
 
 	}//End of function
 
 
 	void SpawnBullet(){
-		/*var temp = transform.position;
-		var ypos = transform.position.y;
-		var xpos = transform.position.x;
-		var angle = transform.eulerAngles.y;
-		var angle2 = transform.eulerAngles.x;
-		Debug.Log(angle + " " +angle2);
-		ypos = transform.position.y + Mathf.Sin(angle) * (renderer.bounds.size.y / 2 + .02f);
-		xpos = transform.position.x + Mathf.Cos(angle2) * (renderer.bounds.size.x / 2 + .02f);
-		temp = new Vector3(xpos, ypos, transform.position.z);*/
-
-
-		//Instantiate(Bullet, transform.position, transform.rotation);	//Spawns a bullet	
-		//Network.Instantiate(Bullet, transform.position, transform.rotation, 0);
-		Network.Instantiate(Bullet, shootPosition.transform.position, transform.rotation, 0);
+		Network.Instantiate(Bullet, shootPosition.transform.position, transform.rotation, 0);	//Spawns bullet on the network
+		audio.PlayOneShot(GunShot);																//Plays gunshot
 	}
 
 }//End of class

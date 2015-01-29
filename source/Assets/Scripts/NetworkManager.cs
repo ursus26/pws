@@ -4,23 +4,20 @@ using System.Collections.Generic;
 
 public class NetworkManager : MonoBehaviour {
 
-	public static NetworkManager Instance;
-	string UniqueGameName = "KKC_PWS_2015_Team_Death_Match";
-	public string PlayerName;
-	public string MatchName;
+	public static NetworkManager Instance;						//Instance of this class
+	string UniqueGameName = "KKC_PWS_2015_Team_Death_Match";	//Unique name
 
-	private GameObject LocalPlayer;
-
-	public GameObject PlayerPrefab;
-
-	private Camera originalCamera;
+	private GameObject LocalPlayer;					//Local player object that the user controls
+	public GameObject PlayerPrefab;					//Prefab of the player
+	private Camera originalCamera;					//Main camera in game
 
 	//Server list variables
-	float RefreshRequestLength = 3f;
-	public HostData[] hostdata;
+	float RefreshRequestLength = 3f;				//Time it's searching for servers
+	public HostData[] hostdata;						//Data of the found hosts
 
 
 	void Awake() {
+		//Only accepts 1 instance of this class, other instances will be deleted
 		if(Instance) {
 			DestroyImmediate(gameObject);
 		} else {
@@ -30,22 +27,20 @@ public class NetworkManager : MonoBehaviour {
 	}
 
 	public void StartServer(string ServerName, int MaxPlayerCount) {
-		Network.InitializeServer(MaxPlayerCount, 23465, true);
-		MasterServer.RegisterHost(UniqueGameName, ServerName, "PWS server");
+		Network.InitializeServer(MaxPlayerCount, 23465, true);					//Init a server
+		MasterServer.RegisterHost(UniqueGameName, ServerName, "PWS server");	//Register the room of the host
 	}
 
 	private IEnumerator RefreshHostList() {
-		Debug.Log ("Refreshing...");
+		MasterServer.RequestHostList(UniqueGameName);		//Get hostlist of the unique game name
+		float timeEnd = Time.time + RefreshRequestLength;	//set time it will be searching for servers
 
-		MasterServer.RequestHostList(UniqueGameName);
-		float timeEnd = Time.time + RefreshRequestLength;
-
-		while(Time.time < timeEnd) {
+		while(Time.time < timeEnd) {				
 			hostdata = MasterServer.PollHostList();
-			yield return new WaitForEndOfFrame();
+			yield return new WaitForEndOfFrame();		
 		}
 
-		if(hostdata == null || hostdata.Length == 0) {
+		if(hostdata == null || hostdata.Length == 0) {		//After the search, if there are no servers
 			Debug.Log ("No servers has been found");
 		}
 	}
@@ -54,25 +49,36 @@ public class NetworkManager : MonoBehaviour {
 		StartCoroutine("RefreshHostList");
 	}
 
-	public void ConnectToServer(HostData hostdata) {
+	public void ConnectToServer(HostData hostdata) {	//Connect to a server
 		Network.Connect(hostdata);
-		Debug.Log ("Connect to server");
 	}
 
 	private void SpawnPlayer() {
+		//Find main camera
 		originalCamera = GameObject.Find("MainCamera").camera;
-		LocalPlayer = (GameObject)Network.Instantiate(PlayerPrefab, new Vector3(0f,0f,-1f), Quaternion.identity, 1);
-		LocalPlayer.GetComponentInChildren<PlayerShoot>().enabled = true;	
-		//LocalPlayer.GetComponent<PlayerShoot>().enabled = true;
+		
+		//Create the player that the user controls
+		LocalPlayer = (GameObject)Network.Instantiate(PlayerPrefab, 
+			new Vector3(0f,0f,-1f), Quaternion.identity, 1);
+		
+		//Enable Player scripts so the user is the only person controlling the local player
+		LocalPlayer.GetComponentInChildren<PlayerShoot>().enabled = true;
 		LocalPlayer.GetComponent<Menu>().enabled = true;
 		LocalPlayer.GetComponent<PlayerMovement>().enabled = true;
+		
+		//Set camera to follow local player
 		LocalPlayer.GetComponent<PlayerMovement>().setCamera(originalCamera);
-
 		originalCamera.GetComponent<CameraMovement>().setCameraTarget(LocalPlayer);
-
-		Debug.Log ("Player spawned");
 	}
-
+	
+	public void DestroyNetworkObject(GameObject gameObject) {
+		
+		if(gameObject != null) {
+			Network.RemoveRPCs(gameObject.networkView.viewID);	//Remove gameobject from network buffer
+ 			Network.Destroy(gameObject);						//Destroys gameobject from network
+		}
+	}
+	
 	void OnLevelWasLoaded(){
 		if(Network.isServer)
 			SpawnPlayer ();
@@ -80,7 +86,7 @@ public class NetworkManager : MonoBehaviour {
 
 
 	void OnServerInitialized() {
-		ChangeScene.Instance.ChangeSceneTo("Map01");
+		ChangeScene.Instance.ChangeSceneTo("Map01");	//when server has been initialized -> change the scene
 	}
 
 	void OnMasterServerEvent(MasterServerEvent masterServerEvent) {
@@ -93,27 +99,12 @@ public class NetworkManager : MonoBehaviour {
 		SpawnPlayer ();
 	}
 
-	void OnDisconnectFromServer() {
-
-	}
-
-
 	void OnFailedToConnect() {
 
 		ChangeScene.Instance.ChangeSceneTo("MainMenu");
 	}
 
-	/*
-	void OnNetworkInstantiate() {
-
-	}
-
-*/
-	void OnPlayerConnected() {
-
-	}
-
-	void OnPlayerDisconnected(NetworkPlayer player) {
+	void OnPlayerDisconnected(NetworkPlayer player) {//Player disconnect -> remove all objects of that player
 		Network.RemoveRPCs(player);
 		Network.DestroyPlayerObjects(player);
 	}
@@ -128,13 +119,5 @@ public class NetworkManager : MonoBehaviour {
 			Network.Disconnect(200);
 		}
 	}
-
-	/*
-	void OnSerializeNetworkView() {
-
-	}
-*/
-
-
 
 }//End of class
