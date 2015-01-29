@@ -69,6 +69,9 @@ public class NetworkManager : MonoBehaviour {
 		//Set camera to follow local player
 		LocalPlayer.GetComponent<PlayerMovement>().setCamera(originalCamera);
 		originalCamera.GetComponent<CameraMovement>().setCameraTarget(LocalPlayer);
+
+		//Plays music
+		Audio.Instance.PlayGameMusic();
 	}
 	
 	public void DestroyNetworkObject(GameObject gameObject) {

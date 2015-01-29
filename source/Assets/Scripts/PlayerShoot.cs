@@ -7,8 +7,6 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject shootPosition;//Position the bullet spawns
 	public float Cooldown = .1f;	//cooldown of shooting a bullet in miliseconds
 	private float NextShot;			//Time for the next shot
-	public AudioClip GunShot;		//Audio clip of the gunshot
-
 
 
 	// Use this for initialization
@@ -33,7 +31,7 @@ public class PlayerShoot : MonoBehaviour {
 
 	void SpawnBullet(){
 		Network.Instantiate(Bullet, shootPosition.transform.position, transform.rotation, 0);	//Spawns bullet on the network
-		audio.PlayOneShot(GunShot);																//Plays gunshot
+		//AudioManager.Instance.PlayGunShot();																//Plays gunshot
 	}
 
 }//End of class

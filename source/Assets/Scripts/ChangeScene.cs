@@ -17,6 +17,7 @@ public class ChangeScene : MonoBehaviour {
 	}
 
 	public void ChangeSceneTo(string SceneName) {	//Change the scene
+		Audio.Instance.StopMusic();
 		Application.LoadLevel(SceneName);
 	}
 

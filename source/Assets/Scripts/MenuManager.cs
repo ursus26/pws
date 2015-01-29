@@ -7,7 +7,8 @@ public class MenuManager : MonoBehaviour {
 	public string Name;				//Server name			
 
 	void Start () {
-		CurrentMenu = "Main";	
+		CurrentMenu = "Main";
+		Audio.Instance.PlayMenuMusic();
 	}
 	
 	void OnGUI() {
