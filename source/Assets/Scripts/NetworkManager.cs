@@ -13,7 +13,7 @@ public class NetworkManager : MonoBehaviour {
 
 	//Server list variables
 	float RefreshRequestLength = 3f;				//Time it's searching for servers
-	private HostData[] hostdata;					//Data of the found hosts
+	public HostData[] hostdata;					//Data of the found hosts
 
 
 	void Awake() {
@@ -73,9 +73,9 @@ public class NetworkManager : MonoBehaviour {
 	
 	public void DestroyNetworkObject(GameObject gameObject) {
 		
-		if(gameobject != null) {
+		if(gameObject != null) {
 			Network.RemoveRPCs(gameObject.networkView.viewID);	//Remove gameobject from network buffer
- 			Network.Destroy(gameObject);				//Destroys gameobject from network
+ 			Network.Destroy(gameObject);						//Destroys gameobject from network
 		}
 	}
 	

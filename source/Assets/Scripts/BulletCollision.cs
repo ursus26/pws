@@ -3,9 +3,7 @@ using System.Collections;
 
 public class BulletCollision : MonoBehaviour {
 
-	private GameObject zObject;
 	PlayerHealth playerHealth; 
-
 
 	void Awake() {
 	}
@@ -17,12 +15,13 @@ public class BulletCollision : MonoBehaviour {
 
 		if(other.tag == "Wall") {
 			//playerHealth.TakeDamage(5);
-			Network.Destroy(GetComponent<NetworkView>().viewID);
+			//Network.Destroy(GetComponent<NetworkView>().viewID);
+			NetworkManager.Instance.DestroyNetworkObject(gameObject);
 		}
 
 		if(other.tag == "Player" && !networkView.isMine) {
-			playerHealth.TakeDamage(5);
-			Network.Destroy(GetComponent<NetworkView>().viewID);
+			playerHealth.TakeDamage(20);
+			NetworkManager.Instance.DestroyNetworkObject(gameObject);
 		}
 	}
 }

@@ -19,7 +19,7 @@ public class BulletMove : MonoBehaviour {
 
 		//Destroys bullet on the whole server after ten seconds
 		if(Time.time >= AutoDestroyTime) {
-			Network.Destroy(GetComponent<NetworkView>().viewID);
+			NetworkManager.Instance.DestroyNetworkObject(gameObject);
 		}
 	}
 }
