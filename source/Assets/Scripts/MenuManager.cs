@@ -4,7 +4,16 @@ using System.Collections;
 public class MenuManager : MonoBehaviour {
 
 	public string CurrentMenu;		//Menu the player is in
-	public string Name;				//Server name			
+	public string Name;				//Server name	
+
+	//Button textures
+	public Texture StartButton;
+	public Texture JoinButton;
+	public Texture HostButton;
+	public Texture RefreshButton;
+	public Texture ReturnButton;
+	public Texture QuitButton;
+	public Texture Background;
 
 	void Start () {
 		CurrentMenu = "Main";
@@ -12,6 +21,8 @@ public class MenuManager : MonoBehaviour {
 	}
 	
 	void OnGUI() {
+		GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),Background);
+
 		if(CurrentMenu == "Main") {
 			MainMenu ();
 		}
@@ -23,6 +34,7 @@ public class MenuManager : MonoBehaviour {
 		if(CurrentMenu == "Server List") {
 			ServerListMenu();
 		}
+
 	}
 
 
@@ -34,18 +46,18 @@ public class MenuManager : MonoBehaviour {
 	void MainMenu() {
 
 		//Button that goes to the next menu where players can host a match/server
-		if(GUI.Button(new Rect(50,25,100,40), "Host")) {
+		if(GUI.Button(new Rect(50,25,150,75), HostButton, GUIStyle.none)) {
 			ChangeMenu("Host");
 		}
 
 		//Button that goes to the next menu where players can join a match/server
-		if(GUI.Button(new Rect(50,65,100,40), "Join server")) {
+		if(GUI.Button(new Rect(50,105,150,75), JoinButton, GUIStyle.none)) {
 			ChangeMenu("Server List");
 			NetworkManager.Instance.RefreshServerList();			
 		}
 
 		//Button that quits the game
-		if(GUI.Button (new Rect(50,105,100,40), "Quit")) {
+		if(GUI.Button (new Rect(50,185,150,75), QuitButton, GUIStyle.none)) {
 			Application.Quit ();
 		}
 	}
@@ -53,16 +65,16 @@ public class MenuManager : MonoBehaviour {
 	void HostMenu() {
 
 		//Button that starts a new server
-		if(GUI.Button(new Rect(50,25,100,40), "Start")) {
+		if(GUI.Button(new Rect(50,25,150,75), StartButton, GUIStyle.none)) {
 			NetworkManager.Instance.StartServer(Name, 2);
 
 		}
 
 		//Text field where players can enter there servername
-		Name = GUI.TextField(new Rect(50,65,100,40), Name);
+		Name = GUI.TextField(new Rect(50,105,150,40), Name);
 
 		//Return to main menu
-		if(GUI.Button(new Rect(50,105,100,40), "Return")) {
+		if(GUI.Button(new Rect(50,150,150,75), ReturnButton, GUIStyle.none)) {
 			ChangeMenu("Main");
 		}
 	}
@@ -70,12 +82,12 @@ public class MenuManager : MonoBehaviour {
 	void ServerListMenu() {
 
 		//Refresh the list containing all servers that are online
-		if(GUI.Button(new Rect(50,65,100,40), "Refresh")) {
+		if(GUI.Button(new Rect(50,25,150,75), RefreshButton, GUIStyle.none)) {
 			NetworkManager.Instance.RefreshServerList();
 		}
 
 		//return to main menu
-		if(GUI.Button(new Rect(50,105,100,40), "Return")) {
+		if(GUI.Button(new Rect(50,105,150,75), ReturnButton, GUIStyle.none)) {
 			ChangeMenu("Main");
 		}
 

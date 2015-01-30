@@ -31,7 +31,7 @@ public class PlayerShoot : MonoBehaviour {
 
 	void SpawnBullet(){
 		Network.Instantiate(Bullet, shootPosition.transform.position, transform.rotation, 0);	//Spawns bullet on the network
-		//AudioManager.Instance.PlayGunShot();																//Plays gunshot
+		Audio.Instance.PlayGunShot();															//Plays gunshot
 	}
 
 }//End of class
