@@ -115,6 +115,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentMenu: 
   Name: 
+  StartButton: {fileID: 2800000, guid: 6abfe778bd4967541b5dcda194b54a3f, type: 3}
+  JoinButton: {fileID: 2800000, guid: 1b139d3c6338cd0439dfca1b77c3f663, type: 3}
+  HostButton: {fileID: 2800000, guid: 98c67b11123bb3648a867186258387ca, type: 3}
+  RefreshButton: {fileID: 2800000, guid: 3a37575bf10c0cb41b49f01796bd3b3e, type: 3}
+  ReturnButton: {fileID: 2800000, guid: 638689f7912fb034b908282d58bb0281, type: 3}
+  QuitButton: {fileID: 2800000, guid: 160d686a7eb0aef458c13faefc419931, type: 3}
+  Background: {fileID: 2800000, guid: 1d8c03327d15d0a4caea6484c155e56b, type: 3}
 --- !u!1 &1152451091
 GameObject:
   m_ObjectHideFlags: 0
